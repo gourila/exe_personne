@@ -13,7 +13,7 @@ namespace exe_personne
 
         public override string ToString()
         {
-            return Nom + "," + Age +"ans";
+            return Nom + "," + Age + "ans";
         }
     }
 }
