@@ -8,7 +8,9 @@ namespace exe_personne
 {
     public class Personne
     {
-        public string Nom { get; set; }    
+        private string nom;
+
+        public string Nom { get => nom; set => nom = value; }
         public int Age { get; set; }
 
         public override string ToString()
