@@ -1,0 +1,37 @@
+﻿<Window x:Class="exe_personne.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:exe_personne"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+
+    <!--Associer le dataContent au ViewModel pour faire le binding-->
+    <Window.DataContext>
+        <local:MonViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+        <!--ListBox avec le binding sur la liste observable et sur la selection-->
+
+        <ListBox ItemsSource="{Binding ListePersonnes}" SelectedItem="{Binding PersonneSelectionnee}" Margin="0,0,593,0"/>
+        <Label Content="Personne selectionnee" HorizontalAlignment="Left" Margin="221,19,0,0" VerticalAlignment="Top" Width="130"/>
+        <!--Label et Textbox avec binding sur l'objet sélectionné-->
+        <Label Content="{Binding PersonneSelectionnee}" HorizontalAlignment="Left" Margin="385,19,0,0" VerticalAlignment="Top" Width="195"/>
+        <TextBox Text="{Binding PersonneSelectionnee.Nom}" HorizontalAlignment="Left" Margin="221,59,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="130"/>
+        <TextBox Text="{Binding PersonneSelectionnee.Age}" HorizontalAlignment="Left" Margin="385,59,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="89"/>
+        <DataGrid ItemsSource="{Binding ListePersonnes}" AutoGenerateColumns="True" SelectedItem="{Binding PersonneSelectionnee}" Margin="245,167,326,20"/>
+        <StackPanel Margin="517,0,10,0">
+            <TextBlock Text="{Binding PersonneSelectionnee}" FontSize="15" Height="124"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Précédent" Command="{Binding PreviousCommand}" Width="77" Margin="5"/>
+                <Button Content="Suivant" Command="{Binding NextCommand}" Width="83" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+
+
+    </Grid>
+</Window>
